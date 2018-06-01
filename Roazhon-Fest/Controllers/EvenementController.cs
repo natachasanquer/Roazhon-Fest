@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BO;
+using DAL;
 using Roazhon_Fest.Models;
 using Service;
 
@@ -42,12 +43,23 @@ namespace Roazhon_Fest.Controllers
 
         // POST: Evenement/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(EvenementViewModel eVM)
         {
+            Evenement evenement = new Evenement() { Date = eVM.Date,
+                                                    Description = eVM.Description,
+                                                    Duree = eVM.Duree,
+                                                    ID = Guid.NewGuid(),
+                                                    Lieu = eVM.Lieu,
+                                                    Nom = eVM.Nom,
+                                                  };
             try
             {
                 // TODO: Add insert logic here
-
+                using (Dal dal = new Dal())
+                {
+                    dal.creerEvenement(evenement);
+                   
+                }
                 return RedirectToAction("Index");
             }
             catch

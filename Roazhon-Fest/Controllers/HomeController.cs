@@ -27,6 +27,11 @@ namespace Roazhon_Fest.Controllers
             return View();
         }
 
+        public ActionResult GoogleMap()
+        {
+            return View();
+        }
+
         public ActionResult AccueilConvive()
         {
             return View();
