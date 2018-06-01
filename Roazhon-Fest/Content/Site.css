@@ -1,24 +1,4 @@
-﻿body {
-    padding-top: 30px;
-    padding-bottom: 20px;
-    background-image: url("rennes.jpg");
-}
-
-.outerForm {
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.6)
-}
-
-form {
-    font-size: 15px;
-    color: white;
-}
-
-#btn {
-    font-size: 15px;
-    font-weight: bold;
-}
-/* Set padding to keep content from hitting the edges */
+﻿/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
