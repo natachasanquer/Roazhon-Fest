@@ -9,17 +9,17 @@ using DAL;
 
 namespace Service
 {
-    public static class ServiceEvenement
+    public class ServiceEvenement : IDisposable
     {
+        private ApplicationContext appliContexte;
+
         public static List<Evenement> GetAll()
         {
             List<Evenement> retour = null;
 
-
             using (ApplicationContext context = new ApplicationContext())
             {
-                retour = context.Evenements.ToList();
-
+                retour = context.Evenements.Include("Theme").ToList();
             }
             return retour;
         }
@@ -35,7 +35,6 @@ namespace Service
             using (ApplicationContext context = new ApplicationContext())
             {
                 retour = context.Evenements.FirstOrDefault(l => l.ID == id);
-
             }
             return retour;
         }
@@ -70,9 +69,20 @@ namespace Service
                 lExistant.Duree= l.Duree;
                 lExistant.Lieu = l.Lieu;
                 lExistant.Nom = l.Nom;
+                lExistant.Theme = l.Theme;
 
                 context.SaveChanges();
             }
+        }
+
+        public void creerEvenement(Evenement evenement)
+        {
+            appliContexte.Evenements.Add(evenement);
+            appliContexte.SaveChanges();
+        }
+        public void Dispose()
+        {
+            appliContexte.Dispose();
         }
     }
 }

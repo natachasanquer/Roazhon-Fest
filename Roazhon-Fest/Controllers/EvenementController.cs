@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BO;
+using DAL;
 using Roazhon_Fest.Models;
 using Service;
 
@@ -44,11 +45,21 @@ namespace Roazhon_Fest.Controllers
         [HttpPost]
         public ActionResult Create(EvenementViewModel eVM)
         {
-            
+            Evenement evenement = new Evenement() { Date = eVM.Date,
+                                                    Description = eVM.Description,
+                                                    Duree = eVM.Duree,
+                                                    ID = Guid.NewGuid(),
+                                                    Lieu = eVM.Lieu,
+                                                    Nom = eVM.Nom,
+                                                  };
             try
             {
                 // TODO: Add insert logic here
-
+                using (ServiceEvenement dal = new ServiceEvenement())
+                {
+                   dal.creerEvenement(evenement);
+                   
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -58,14 +69,14 @@ namespace Roazhon_Fest.Controllers
         }
 
         // GET: Evenement/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
             return View();
         }
 
         // POST: Evenement/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
             {
