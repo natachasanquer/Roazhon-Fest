@@ -19,7 +19,7 @@
  * Designed and built with all the love in the world by @mdo and @fat.
  */
 
-/*! normalize.css v2.1.0 | MIT License | git.io/normalize */
+/*! normalize.css v2.1.0 | MIT License | git.io/normalize 
 
 article,
 aside,
@@ -1667,10 +1667,10 @@ input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
-  /* IE8-9 */
-
+  /* IE8-9 
   line-height: normal;
 }
+    
 
 input[type="file"] {
   display: block;
@@ -1715,7 +1715,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .form-control::-webkit-input-placeholder {
   color: #999999;
 }
-
+   
 .form-control {
   display: block;
   width: 100%;
@@ -5599,7 +5599,7 @@ button.close {
   border: 0;
   -webkit-appearance: none;
 }
-
+     
 .modal-open {
   overflow: hidden;
 }
@@ -6813,4 +6813,4 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
-}
+}*/
