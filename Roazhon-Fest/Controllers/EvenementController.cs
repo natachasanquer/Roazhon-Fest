@@ -42,8 +42,9 @@ namespace Roazhon_Fest.Controllers
 
         // POST: Evenement/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(EvenementViewModel eVM)
         {
+            
             try
             {
                 // TODO: Add insert logic here
