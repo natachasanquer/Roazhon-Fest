@@ -19,10 +19,10 @@ namespace Roazhon_Fest.Controllers
             List<EvenementViewModel> listes = new List<EvenementViewModel>();
 
 
-            List<Evenement> livres = ServiceEvenement.GetAll();
-            foreach (Evenement li in livres)
+            List<Evenement> evenements = ServiceEvenement.GetAll();
+            foreach (Evenement evenement in evenements)
             {
-                listes.Add(new EvenementViewModel(li));
+                listes.Add(new EvenementViewModel(evenement));
             }
 
             return View(listes);
