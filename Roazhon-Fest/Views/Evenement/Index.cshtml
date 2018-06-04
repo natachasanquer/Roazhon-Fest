@@ -17,10 +17,12 @@
         <nav class="navbar navbar-light alert alert-info mt-4 mb-4 shadow mx-auto col-11">
             <form class="form-inline mx-auto">
                 <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                <button class="btn btn-outline-info ml-auto" type="button">Ajouter</button>
                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Go</button>
             </form>
+            <!-- <button class="btn btn-outline-info ml-auto" type="button">Ajouter</button> -->
+            @Html.ActionLink("Ajouter", "Create", null, new { @class = "decoration-none" })
             <button class="btn btn-outline-danger ml-auto" type="button"><img src="~/Content/logout.png" width="30px" /></button>
+
         </nav>
 
         <div class="row mx-auto my-5">
