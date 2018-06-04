@@ -45,6 +45,7 @@ namespace Roazhon_Fest.Controllers
         [HttpPost]
         public ActionResult Create(EvenementViewModel eVM)
         {
+            System.Diagnostics.Debug.WriteLine("Entrée dans la méthode de création de la classe Evenement.");
             Evenement evenement = new Evenement() { Date = eVM.Date,
                                                     Description = eVM.Description,
                                                     Duree = eVM.Duree,

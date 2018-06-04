@@ -17,8 +17,9 @@
         <nav class="navbar navbar-light alert alert-info mt-4 mb-4 shadow mx-auto col-11">
             <form class="form-inline mx-auto">
                 <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                <button class="btn btn-outline-info ml-auto" type="button">Ajouter</button>
+                <!--button class="btn btn-outline-info ml-auto" type="button">Ajouter</!--button>-->
                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Go</button>
+                @Html.ActionLink("Ajouter", "Create")
             </form>
             <button class="btn btn-outline-danger ml-auto" type="button"><img src="~/Content/logout.png" width="30px" /></button>
         </nav>
@@ -30,7 +31,8 @@
                 <div class="card mx-auto my-4 shadow scale" style="width: 18rem;">
                     <img class="card-img-top" src="~/Content/rennes.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="text-center font-weight-bold">@Html.DisplayFor(modelItem => item.Nom)</h5>
+                        @Html.ActionLink(@Html.DisplayFor(modelItem => item.Nom).ToString(), "Details", new { ID = item.ID })
+                        <!--<h5 class="text-center font-weight-bold"></h5> -->
                         <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
                     </div>
                 </div>
