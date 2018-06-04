@@ -25,7 +25,7 @@ namespace Service
         }
 
         /// <summary>
-        /// retoune le livre en BDD
+        /// retoune l'utilisateur en BDD
         /// </summary>
         /// <param name="id">identifiant du livre</param>
         /// <returns></returns>

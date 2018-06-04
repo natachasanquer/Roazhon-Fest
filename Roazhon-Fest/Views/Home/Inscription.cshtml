@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model Roazhon_Fest.Models.RegisterViewModel
+@{
+    ViewBag.Title = "S’inscrire";
 }
 
 <!doctype html>
@@ -18,30 +19,30 @@
         <div id="form" class="outerForm col-8 col-lg-4 mt-5 py-4 mx-auto" style="display:none">
             <form class="col-10 mx-auto">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Pseudonyme</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Mot de passe</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" required>
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Confirmer le mot de passe</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" required>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">M'abonner à la newsletter</label>
-                </div>
-                <div class="text-center pt-3">
-                    <button id="btn" type="submit" class="btn btn-outline-light">S'inscrire</button>
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Register" class="btn btn-default" value="S’inscrire" />
+                    </div>
                 </div>
             </form>
-         </div>
+        </div>
     </div>
 
 
