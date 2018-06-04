@@ -15,9 +15,9 @@
     <div class="container">
         <img src="~/Content/blason.png" width="120px" class="mx-auto d-block mb-2" />
         <p class="text-center font-weight-bold mb-5">L'événement à portée de clic !</p>
-        <div id="form" class="outerForm col-8 col-lg-4 mt-5 py-5 mx-auto" style="display:none">
+        <div id="form" class="outerForm col-8 col-lg-4 mt-5 pt-5 pb-3 mx-auto" style="display:none">
             <form class="col-10 mx-auto">
-                <div class="form-group">
+                <div class="form-group"> 
                     <label for="exampleInputEmail1">Email</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 </div>
@@ -29,6 +29,7 @@
                     <button id="btn" type="submit" class="btn btn-outline-light">Ok</button>
                 </div>
             </form>
+            <p class="text-center mt-3 text-white">Pas encore inscrit ? @Html.ActionLink("S'inscrire", "Inscription", null, new { @class = "decoration-none" })</p>
         </div>
     </div>
 
