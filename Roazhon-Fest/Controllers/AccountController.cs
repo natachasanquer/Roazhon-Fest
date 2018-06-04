@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Roazhon_Fest.Models;
+using Service;
 
 namespace Roazhon_Fest.Controllers
 {
@@ -79,7 +82,7 @@ namespace Roazhon_Fest.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal("/Home/AccueilConvive");
+                    return RedirectToAction("Index", "Evenement");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -156,14 +159,16 @@ namespace Roazhon_Fest.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // Pour plus d'informations sur l'activation de la confirmation de compte et de la réinitialisation de mot de passe, visitez https://go.microsoft.com/fwlink/?LinkID=320771
                     // Envoyer un message électronique avec ce lien
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
 
-                    return RedirectToAction("AccueilConvive", "Home");
+                    List<Evenement> evenements = ServiceEvenement.GetAll();
+
+                    return RedirectToAction("AccueilConvive", new {evenements = evenements });
                 }
                 AddErrors(result);
             }
