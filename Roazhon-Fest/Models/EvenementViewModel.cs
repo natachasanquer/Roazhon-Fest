@@ -60,7 +60,13 @@ namespace Roazhon_Fest.Models
             { return Metier.Nom; }
             set { Metier.Nom = value; }
         }
-
+        [Display(Name = "Theme")]
+        public string Theme
+        {
+            get
+            { return Metier.Theme.Libelle; }
+            set { Metier.Theme.Libelle= value; }
+        }
         public static List<EvenementViewModel> GetAll()
         {
             List<EvenementViewModel> retour = new List<EvenementViewModel>();

@@ -97,7 +97,6 @@
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="ApplicationContextInitializer.cs" />
     <Compile Include="ApplicationUser.cs" />
-    <Compile Include="Dal.cs" />
     <Compile Include="Migrations\201805301507256_itializeDb.cs" />
     <Compile Include="Migrations\201805301507256_itializeDb.Designer.cs">
       <DependentUpon>201805301507256_itializeDb.cs</DependentUpon>

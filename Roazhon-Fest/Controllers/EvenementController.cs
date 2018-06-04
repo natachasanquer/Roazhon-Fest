@@ -19,10 +19,10 @@ namespace Roazhon_Fest.Controllers
             List<EvenementViewModel> listes = new List<EvenementViewModel>();
 
 
-            List<Evenement> livres = ServiceEvenement.GetAll();
-            foreach (Evenement li in livres)
+            List<Evenement> evenements = ServiceEvenement.GetAll();
+            foreach (Evenement evenement in evenements)
             {
-                listes.Add(new EvenementViewModel(li));
+                listes.Add(new EvenementViewModel(evenement));
             }
 
             return View(listes);
@@ -55,9 +55,9 @@ namespace Roazhon_Fest.Controllers
             try
             {
                 // TODO: Add insert logic here
-                using (Dal dal = new Dal())
+                using (ServiceEvenement dal = new ServiceEvenement())
                 {
-                    dal.creerEvenement(evenement);
+                   dal.creerEvenement(evenement);
                    
                 }
                 return RedirectToAction("Index");
@@ -69,14 +69,14 @@ namespace Roazhon_Fest.Controllers
         }
 
         // GET: Evenement/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
             return View();
         }
 
         // POST: Evenement/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
             {
