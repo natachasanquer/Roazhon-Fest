@@ -18,3 +18,8 @@ form {
     font-size: 15px;
     font-weight: bold;
 }
+
+.decoration-none {
+    text-decoration : none;
+    font-weight: bold;
+}

@@ -11,8 +11,6 @@ namespace Service
 {
     public class ServiceEvenement : IDisposable
     {
-        private ApplicationContext appliContexte;
-
         public static List<Evenement> GetAll()
         {
             List<Evenement> retour = null;
@@ -34,7 +32,7 @@ namespace Service
             Evenement retour = null;
             using (ApplicationContext context = new ApplicationContext())
             {
-                retour = context.Evenements.FirstOrDefault(l => l.ID == id);
+                retour = context.Evenements.Include("Theme").FirstOrDefault(l => l.ID == id);
             }
             return retour;
         }
@@ -42,7 +40,7 @@ namespace Service
         //surcharge, on la met en private car utilisée uniquement par le service
         private static Evenement Get(Guid id, ApplicationContext context)
         {
-            return context.Evenements.FirstOrDefault(l => l.ID == id);
+            return context.Evenements.Include("Theme").FirstOrDefault(l => l.ID == id);
         }
 
         public static void Insert(Evenement l)
@@ -55,21 +53,22 @@ namespace Service
 
         }
 
-        public static void Update(Evenement l)
+        public static void Update(Guid Id)
         {
+            Evenement evenement = Get(Id);
             using (ApplicationContext context = new ApplicationContext())
             {
 
-                EntityState s = context.Entry(l).State;
+                EntityState s = context.Entry(evenement).State;
                 //on récupère le livre existant et lui passe les param du l récupéré sur la vue
                 //utilisation de la méthode Get surchargée
-                Evenement lExistant = Get(l.ID, context);
-                lExistant.Date = l.Date;
-                lExistant.Description= l.Description;
-                lExistant.Duree= l.Duree;
-                lExistant.Lieu = l.Lieu;
-                lExistant.Nom = l.Nom;
-                lExistant.Theme = l.Theme;
+                Evenement lExistant = Get(evenement.ID, context);
+                lExistant.Date = evenement.Date;
+                lExistant.Description= evenement.Description;
+                lExistant.Duree= evenement.Duree;
+                lExistant.Lieu = evenement.Lieu;
+                lExistant.Nom = evenement.Nom;
+                lExistant.Theme = evenement.Theme;
 
                 context.SaveChanges();
             }
@@ -77,12 +76,20 @@ namespace Service
 
         public void creerEvenement(Evenement evenement)
         {
-            appliContexte.Evenements.Add(evenement);
-            appliContexte.SaveChanges();
+            using (ApplicationContext context = new ApplicationContext())
+            {
+
+                context.Evenements.Add(evenement);
+                context.SaveChanges();
+            }
+           
         }
         public void Dispose()
         {
-            appliContexte.Dispose();
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                context.Dispose();
+            }
         }
     }
 }

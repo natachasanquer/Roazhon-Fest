@@ -49,7 +49,7 @@ namespace Roazhon_Fest.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Courrier électronique")]
+        [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 

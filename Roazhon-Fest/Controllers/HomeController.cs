@@ -8,7 +8,7 @@ namespace Roazhon_Fest.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Connexion()
         {
             return View();
         }
@@ -33,6 +33,15 @@ namespace Roazhon_Fest.Controllers
         }
 
         public ActionResult AccueilConvive()
+        {
+            return View();
+        }
+
+        public ActionResult Inscription()
+        {
+            return View();
+        }
+        public ActionResult AccueilAdministrateur()
         {
             return View();
         }

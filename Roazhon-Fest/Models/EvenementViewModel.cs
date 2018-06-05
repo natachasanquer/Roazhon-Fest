@@ -15,8 +15,6 @@ namespace Roazhon_Fest.Models
             this.Metier = new Evenement();
 
         }
-
-
         public EvenementViewModel(Evenement l)
         {
             this.Metier = l;
@@ -88,7 +86,7 @@ namespace Roazhon_Fest.Models
             else
             {
                 //update
-                ServiceEvenement.Update(this.Metier);
+                ServiceEvenement.Update(this.Metier.ID);
             }
         }
 

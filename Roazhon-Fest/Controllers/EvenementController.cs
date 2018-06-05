@@ -19,10 +19,10 @@ namespace Roazhon_Fest.Controllers
             List<EvenementViewModel> listes = new List<EvenementViewModel>();
 
 
-            List<Evenement> livres = ServiceEvenement.GetAll();
-            foreach (Evenement li in livres)
+            List<Evenement> evenements = ServiceEvenement.GetAll();
+            foreach (Evenement evenement in evenements)
             {
-                listes.Add(new EvenementViewModel(li));
+                listes.Add(new EvenementViewModel(evenement));
             }
 
             return View(listes);
@@ -45,6 +45,7 @@ namespace Roazhon_Fest.Controllers
         [HttpPost]
         public ActionResult Create(EvenementViewModel eVM)
         {
+            System.Diagnostics.Debug.WriteLine("Entrée dans la méthode de création de la classe Evenement.");
             Evenement evenement = new Evenement() { Date = eVM.Date,
                                                     Description = eVM.Description,
                                                     Duree = eVM.Duree,
