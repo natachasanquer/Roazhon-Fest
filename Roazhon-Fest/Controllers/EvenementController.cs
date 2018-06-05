@@ -78,24 +78,12 @@ namespace Roazhon_Fest.Controllers
         // GET: Evenement/Edit/5
         public ActionResult Edit(Guid id)
         {
-            return View();
+            SelectList themesBO = new SelectList(ServiceTheme.GetAll(), "ID", "Libelle");
+            EvenementViewModel evm = new EvenementViewModel(ServiceEvenement.GetAll().FirstOrDefault(l => l.ID == id));
+            evm.themes = themesBO;
+            return View(evm);
         }
 
-        // POST: Evenement/Edit/5
-        [HttpPost]
-        public ActionResult Edit(Guid id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         [HttpPost]
         public ActionResult Edit(EvenementViewModel lVM)
