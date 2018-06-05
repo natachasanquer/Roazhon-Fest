@@ -74,7 +74,7 @@ namespace Roazhon_Fest.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return RedirectToAction("Connexion", "Home");
             }
 
             // Ceci ne comptabilise pas les échecs de connexion pour le verrouillage du compte
@@ -91,7 +91,7 @@ namespace Roazhon_Fest.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Tentative de connexion non valide.");
-                    return View(model);
+                    return RedirectToAction("Connexion", "Home");
             }
         }
 
