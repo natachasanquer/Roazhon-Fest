@@ -47,14 +47,27 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Theme, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+                @*@Html.EditorFor(model => model.Theme, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })*@
+
+                <cc1:ComboBox ID="ComboBox1"
+                              DataSourceID="SqlDataSource1"
+                              DataTextField="Title"
+                              DataValueField="Id"
+                              MaxLength="0"
+                              runat="server">
+                </cc1:ComboBox>
+
+                <asp:SqlDataSource ID="SqlDataSource1"
+                                   ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+                                   SelectCommand="SELECT * FROM [Themes]"
+                                   runat="server">
+                </asp:SqlDataSource>
             </div>
         </div>
 
-        string selectedItemValue = Combobox.Value;
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
