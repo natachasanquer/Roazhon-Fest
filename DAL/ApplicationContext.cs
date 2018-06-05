@@ -38,6 +38,8 @@ namespace DAL
 
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
 
+        public virtual DbSet<Theme> Themes { get; set; }
+
     }
 
     //public class MyEntity
