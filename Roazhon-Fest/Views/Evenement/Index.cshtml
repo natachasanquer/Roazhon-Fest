@@ -32,7 +32,7 @@
                 <div class="card mx-auto my-4 shadow scale" style="width: 18rem;">
                     <img class="card-img-top" src="~/Content/rennes.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="text-center font-weight-bold">@Html.DisplayFor(modelItem => item.Nom)</h5>
+                        @Html.ActionLink(@Html.DisplayFor(modelItem => item.Nom).ToString(), "Details", new { ID = item.ID })
                         <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
                     </div>
                 </div>
