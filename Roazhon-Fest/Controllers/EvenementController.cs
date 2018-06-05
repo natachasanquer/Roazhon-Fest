@@ -38,13 +38,17 @@ namespace Roazhon_Fest.Controllers
         // GET: Evenement/Create
         public ActionResult Create()
         {
-            return View();
+            SelectList themesBO = new SelectList(ServiceTheme.GetAll(), "ID", "Libelle");
+            EvenementViewModel evm = new EvenementViewModel();
+            evm.themes = themesBO;
+            return View(evm);
         }
 
         // POST: Evenement/Create
         [HttpPost]
         public ActionResult Create(EvenementViewModel eVM)
         {
+          
             System.Diagnostics.Debug.WriteLine("Entrée dans la méthode de création de la classe Evenement.");
             Evenement evenement = new Evenement() { Date = eVM.Date,
                                                     Description = eVM.Description,
@@ -52,6 +56,7 @@ namespace Roazhon_Fest.Controllers
                                                     ID = Guid.NewGuid(),
                                                     Lieu = eVM.Lieu,
                                                     Nom = eVM.Nom,
+                                                    Theme = new Theme() { ID = eVM.ID, Libelle= eVM.Theme.Libelle} 
                                                   };
             try
             {
@@ -67,6 +72,7 @@ namespace Roazhon_Fest.Controllers
             {
                 return View();
             }
+          
         }
 
         // GET: Evenement/Edit/5

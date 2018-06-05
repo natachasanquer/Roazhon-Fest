@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using BO;
 using Service;
 
@@ -13,6 +14,9 @@ namespace Roazhon_Fest.Models
         public EvenementViewModel()
         {
             this.Metier = new Evenement();
+           
+
+            
 
         }
         public EvenementViewModel(Evenement l)
@@ -59,11 +63,11 @@ namespace Roazhon_Fest.Models
             set { Metier.Nom = value; }
         }
         [Display(Name = "Theme")]
-        public string Theme
+        public Theme Theme
         {
             get
-            { return Metier.Theme.Libelle; }
-            set { Metier.Theme.Libelle= value; }
+            { return Metier.Theme; }
+            set { Metier.Theme= value; }
         }
         public static List<EvenementViewModel> GetAll()
         {
@@ -112,5 +116,7 @@ namespace Roazhon_Fest.Models
 
             return retour;
         }
+
+        public IEnumerable<SelectListItem> themes { get; set; }
     }
 }
