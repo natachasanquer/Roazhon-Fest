@@ -30,57 +30,22 @@
 </head>
 <body>
     <div class="container">
-
-        <div id="googleMap" style="width:100%;height:560px;"></div>
-        <!--<script async defer src="https://maps.googleapis.com/maps/api/staticmap?key =AIzaSyBG1YsUa6hRRT6uY-ZX8gJXuxWwm-Iwx3A&callback=myMap&zoom =12&format =png&maptype =roadmap&style =element:geometry%7Ccolor:0xebe3cd&style =element:labels.text.fill%7Ccolor:0x523735&style =element:labels.text.stroke%7Ccolor:0xf5f1e6&style =feature:administrative%7Celement:geometry.stroke%7Ccolor:0xc9b2a6&style =feature:administrative.land_parcel%7Celement:geometry.stroke%7Ccolor:0xdcd2be&style =feature:administrative.land_parcel%7Celement:labels.text.fill%7Ccolor:0xae9e90&style =feature:landscape.natural%7Celement:geometry%7Ccolor:0xdfd2ae&style =feature:poi%7Celement:geometry%7Ccolor:0xdfd2ae&style =feature:poi%7Celement:labels.text.fill%7Ccolor:0x93817c&style =feature:poi.park%7Celement:geometry.fill%7Ccolor:0xa5b076&style =feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x447530&style =feature:road%7Celement:geometry%7Ccolor:0xf5f1e6&style =feature:road.arterial%7Celement:geometry%7Ccolor:0xfdfcf8&style =feature:road.highway%7Celement:geometry%7Ccolor:0xf8c967&style =feature:road.highway%7Celement:geometry.stroke%7Ccolor:0xe9bc62&style =feature:road.highway.controlled_access%7Celement:geometry%7Ccolor:0xe98d58&style =feature:road.highway.controlled_access%7Celement:geometry.stroke%7Ccolor:0xdb8555&style =feature:road.local%7Celement:labels.text.fill%7Ccolor:0x806b63&style =feature:transit.line%7Celement:geometry%7Ccolor:0xdfd2ae&style =feature:transit.line%7Celement:labels.text.fill%7Ccolor:0x8f7d77&style =feature:transit.line%7Celement:labels.text.stroke%7Ccolor:0xebe3cd&style =feature:transit.station%7Celement:geometry%7Ccolor:0xdfd2ae&style =feature:water%7Celement:geometry.fill%7Ccolor:0xb9d3c2&style =feature:water%7Celement:labels.text.fill%7Ccolor:0x92998d&size =480x360"></script>-->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG1YsUa6hRRT6uY-ZX8gJXuxWwm-Iwx3A&callback=myMap"></script>
-        <!--
-        <div id="dirMap" style="width:80%;height:360px;"></div>
-        <div id="directionsPanel" style="float:right;width:80%;height:460px"></div>
-        <div>
-            <strong>Start: </strong>
-            <select id="newStart" onchange="calculateAndDisplayRoute();">
-                <option value="chicago, il">Chicago</option>
-                <option value="st louis, mo">St Louis</option>
-                <option value="joplin, mo">Joplin, MO</option>
-                <option value="oklahoma city, ok">Oklahoma City</option>
-                <option value="amarillo, tx">Amarillo</option>
-                <option value="gallup, nm">Gallup, NM</option>
-                <option value="flagstaff, az">Flagstaff, AZ</option>
-                <option value="winona, az">Winona</option>
-                <option value="kingman, az">Kingman</option>
-                <option value="barstow, ca">Barstow</option>
-                <option value="san bernardino, ca">San Bernardino</option>
-                <option value="los angeles, ca">Los Angeles</option>
-            </select>
-            <strong>End: </strong>
-            <select id="newEnd" onchange="calculateAndDisplayRoute();">
-                <option value="chicago, il">Chicago</option>
-                <option value="st louis, mo">St Louis</option>
-                <option value="joplin, mo">Joplin, MO</option>
-                <option value="oklahoma city, ok">Oklahoma City</option>
-                <option value="amarillo, tx">Amarillo</option>
-                <option value="gallup, nm">Gallup, NM</option>
-                <option value="flagstaff, az">Flagstaff, AZ</option>
-                <option value="winona, az">Winona</option>
-                <option value="kingman, az">Kingman</option>
-                <option value="barstow, ca">Barstow</option>
-                <option value="san bernardino, ca">San Bernardino</option>
-                <option value="los angeles, ca">Los Angeles</option>
-            </select>
-            <button id="confirm" type="submit" class="btn btn-primary">Ok</button>
+        <div id="destinationForm">
+            <form action="" method="get" name="direction" id="direction">
+                <label>Point de départ :</label>
+                <input type="text" name="origin" id="origin">
+                <label>Destination :</label>
+                <input type="text" name="destination" id="destination">
+                <input type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()">
+            </form>
         </div>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG1YsUa6hRRT6uY-ZX8gJXuxWwm-Iwx3A&callback=initMap"></script>
-        -->
-
-        <!--
-    <div id="map" style="width:100%;height:560px;"></div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG1YsUa6hRRT6uY-ZX8gJXuxWwm-Iwx3A&callback=initMap"></script>
-    -->
+        <div id="panel" ></div>
+        <div id="googleMap" style="width:100%;height:460px;"></div>
     </div>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG1YsUa6hRRT6uY-ZX8gJXuxWwm-Iwx3A&callback=myMap"></script>
 
-
-    <!--   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="~/Scripts/googlemap.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
