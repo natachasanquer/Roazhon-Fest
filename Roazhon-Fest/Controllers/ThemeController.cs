@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Roazhon_Fest.Models;
 using BO;
+using Service;
 
 namespace Roazhon_Fest.Controllers
 {
@@ -14,7 +15,7 @@ namespace Roazhon_Fest.Controllers
         public ActionResult Index()
         {
             List<ThemeViewModel> themesVM = new List<ThemeViewModel>();
-            List<Theme> themes = ServiceTheme.getAll();
+            List<Theme> themes = ServiceTheme.GetAll();
             foreach (Theme theme in themes)
             {
                 themesVM.Add(new ThemeViewModel(theme));

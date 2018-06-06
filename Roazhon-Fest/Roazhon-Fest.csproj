@@ -315,6 +315,9 @@
     <Content Include="Views\Evenement\Edit.cshtml" />
     <Content Include="Views\Home\GoogleMap.cshtml" />
     <Content Include="Views\Home\Inscription.cshtml" />
+    <Content Include="Views\Json\park.json" />
+    <Content Include="Views\Json\park2.json" />
+    <Content Include="Views\Home\TrajetConvive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
