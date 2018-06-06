@@ -38,13 +38,17 @@ namespace Roazhon_Fest.Controllers
         // GET: Evenement/Create
         public ActionResult Create()
         {
-            return View();
+            SelectList themesBO = new SelectList(ServiceTheme.GetAll(), "ID", "Libelle");
+            EvenementViewModel evm = new EvenementViewModel();
+            evm.themes = themesBO;
+            return View(evm);
         }
 
         // POST: Evenement/Create
         [HttpPost]
         public ActionResult Create(EvenementViewModel eVM)
         {
+          
             System.Diagnostics.Debug.WriteLine("Entrée dans la méthode de création de la classe Evenement.");
             Evenement evenement = new Evenement() { Date = eVM.Date,
                                                     Description = eVM.Description,
@@ -52,44 +56,31 @@ namespace Roazhon_Fest.Controllers
                                                     ID = Guid.NewGuid(),
                                                     Lieu = eVM.Lieu,
                                                     Nom = eVM.Nom,
+                                                    Theme = new Theme() { ID = eVM.ID, Libelle= eVM.Theme.Libelle} 
                                                   };
             try
             {
                 // TODO: Add insert logic here
-                using (ServiceEvenement dal = new ServiceEvenement())
-                {
-                   dal.creerEvenement(evenement);
+               ServiceEvenement.CreerEvenement(evenement);
                    
-                }
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
+          
         }
 
         // GET: Evenement/Edit/5
         public ActionResult Edit(Guid id)
         {
-            return View();
+            SelectList themesBO = new SelectList(ServiceTheme.GetAll(), "ID", "Libelle");
+            EvenementViewModel evm = new EvenementViewModel(ServiceEvenement.GetAll().FirstOrDefault(l => l.ID == id));
+            evm.themes = themesBO;
+            return View(evm);
         }
 
-        // POST: Evenement/Edit/5
-        [HttpPost]
-        public ActionResult Edit(Guid id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         [HttpPost]
         public ActionResult Edit(EvenementViewModel lVM)
@@ -113,9 +104,10 @@ namespace Roazhon_Fest.Controllers
         }
 
         // GET: Evenement/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            Evenement evenement = ServiceEvenement.GetAll().FirstOrDefault(l => l.ID == id);
+            return RedirectToAction("Index");
         }
 
         // POST: Evenement/Delete/5
