@@ -45,5 +45,11 @@ namespace Roazhon_Fest.Controllers
         {
             return View();
         }
+
+
+        public ActionResult TrajetConvive()
+        {
+            return View();
+        }
     }
 }

@@ -8,6 +8,9 @@ function myMap() {
         center: rennes
     });
 
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
+
     panel = document.getElementById("panel");
 
     var marker = new google.maps.Marker({
@@ -65,6 +68,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function calculate () {
     origin = document.getElementById("origin").value; // Le point départ
     destination = document.getElementById("destination").value; // Le point d'arrivé
+    console.log(destination);
     if (origin && destination) {
         var request = {
             origin: origin,
@@ -73,7 +77,7 @@ function calculate () {
         }
         var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
         directionsService.route(request, function (response, status) { // Envoie de la requête pour calculer le parcours
-            if (status == google.maps.DirectionsStatus.OK) {
+            if (status === google.maps.DirectionsStatus.OK) {
                 direction.setDirections(response); // Trace l'itinéraire sur la carte et les différentes étapes du parcours
             }
         });
