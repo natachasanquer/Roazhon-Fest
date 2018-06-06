@@ -21,12 +21,12 @@
             <button class="btn btn-outline-danger ml-auto" type="button"><img src="~/Content/logout.png" width="24px" /></button>
         </nav>
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Create", "Evenement", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
         <h4 class="mt-5">Ajouter un événement</h4>
-        <hr class="mb-5 col-11"/>
+        <hr class="mb-5 col-11" />
         <div class="form-horizontal mx-auto col-11" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.45);">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="row">
@@ -40,7 +40,7 @@
                 <div class="form-group col-5 mx-auto mt-5">
                     @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label " })
                     <div class="">
-                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", type="textarea" } })
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", type = "textarea" } })
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -74,20 +74,25 @@
                     @Html.LabelFor(model => model.Theme, htmlAttributes: new { @class = "control-label" })
                     <div class="">
                         @*@Html.EditorFor(model => model.Theme, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })*@
-                        @Html.DropDownListFor(model => model.Theme.ID, Model.themes, "Sélectionnez un thème", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })*@
+                        @Html.DropDownListFor(model => model.Theme, Model.themes, "Sélectionnez un thème", new { @class = "form-control" })
                     </div>
                 </div>
             </div>
-                <div class="form-group">
-                    <div class="text-center">
-                        <input type="submit" value="Créer" class="btn btn-default my-5" />
-                    </div>
-                </div>
-            </div>
-            }
 
+            <div class="form-group">
+                @Html.TextBoxFor(model => model.Image, "", new { @type = "file", @multiple = "multiple", @class = "form-control-file" })
+            </div>
+
+            <div class="form-group">
+                <div class="text-center">
+                    <input type="submit" value="Créer" class="btn btn-default my-5" />
+                </div>
+            </div>
         </div>
+}
+
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
