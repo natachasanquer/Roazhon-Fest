@@ -45,13 +45,10 @@ function myMap() {
     }
 
     direction = new google.maps.DirectionsRenderer({
+        draggable: true, // pour bouger les marqueurs de place
         map: map,
         panel: panel // Dom element pour afficher les instructions d'itinéraire
     });
-
-    //document.getElementById('confirm').addEventListener('click', function () {
-      //  calculateAndDisplayRoute(directionsService, directionsDisplay);
-    //});
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
