@@ -1,63 +1,74 @@
 ﻿@model Roazhon_Fest.Models.EvenementViewModel
 
-<div>
-    <h4>EvenementViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Connexion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="~/Content/accueilConvive.css" />
+</head>
+<body>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+    <div>
+        <h4>EvenementViewModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Duree)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Duree)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Duree)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Lieu)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Duree)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Lieu)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Lieu)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Lieu)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Nom)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Theme)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nom)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Theme.Libelle)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Theme)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.Theme.Libelle)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 
 
 @{
@@ -80,11 +91,13 @@
 
 
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG1YsUa6hRRT6uY-ZX8gJXuxWwm-Iwx3A&callback=myMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG1YsUa6hRRT6uY-ZX8gJXuxWwm-Iwx3A&callback=myMap"></script>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="~/Scripts/googlemap.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/Scripts/googlemap.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>

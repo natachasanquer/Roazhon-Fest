@@ -40,7 +40,7 @@ namespace Service
         //surcharge, on la met en private car utilisée uniquement par le service
         private static Evenement Get(Guid id, ApplicationContext context)
         {
-            return context.Evenements.Include("Theme").FirstOrDefault(l => l.ID == id);
+            return context.Evenements.Include("Theme").Include("Images").FirstOrDefault(l => l.ID == id);
         }
 
         public static void supprimerEvenement(Evenement l)
@@ -78,6 +78,8 @@ namespace Service
         {
             using (ApplicationContext context = new ApplicationContext())
             {
+                Theme theme = context.Themes.FirstOrDefault(t => t.ID == evenement.Theme.ID);
+                evenement.Theme = theme;
 
                 context.Evenements.Add(evenement);
                 context.SaveChanges();

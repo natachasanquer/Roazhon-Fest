@@ -40,6 +40,8 @@ namespace DAL
 
         public virtual DbSet<Theme> Themes { get; set; }
 
+        public virtual DbSet<Image> Images { get; set; }
+
     }
 
     //public class MyEntity

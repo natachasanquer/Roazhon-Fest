@@ -322,7 +322,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Image\" />
+    <Folder Include="Views\Images\" />
     <Folder Include="Views\Theme\" />
   </ItemGroup>
   <ItemGroup>
