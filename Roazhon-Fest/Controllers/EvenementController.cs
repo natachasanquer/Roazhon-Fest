@@ -71,7 +71,11 @@ namespace Roazhon_Fest.Controllers
             evenement.Images.Add(img);
             evenement.ID = Guid.NewGuid();
 
-            
+            System.Security.Principal.IPrincipal u = System.Web.HttpContext.Current.User;
+            EvenementUtilisateur evenementutilisateur = new EvenementUtilisateur() { Utilisateur = new Utilisateur() { Email = u.Identity.Name, ID = Guid.NewGuid() } };
+            evenement.Utilisateurs = new List<EvenementUtilisateur>();
+            evenement.Utilisateurs.Add(evenementutilisateur);
+
             try
             {
                ServiceEvenement.CreerEvenement(evenement);
