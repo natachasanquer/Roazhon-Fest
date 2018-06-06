@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -48,24 +49,36 @@ namespace Roazhon_Fest.Controllers
         [HttpPost]
         public ActionResult Create(EvenementViewModel eVM)
         {
-          
+            
+            Image img = new Image();
+            var fileI = Request.Files[0];
+            if (fileI != null && fileI.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(fileI.FileName);
+                var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                if (!System.IO.File.Exists(path))
+                {
+                    fileI.SaveAs(path);
+                    img.Url = fileName;
+                }
+            }
+
+            img.ID = Guid.NewGuid();
+
             System.Diagnostics.Debug.WriteLine("Entrée dans la méthode de création de la classe Evenement.");
-            Evenement evenement = new Evenement() { Date = eVM.Date,
-                                                    Description = eVM.Description,
-                                                    Duree = eVM.Duree,
-                                                    ID = Guid.NewGuid(),
-                                                    Lieu = eVM.Lieu,
-                                                    Nom = eVM.Nom,
-                                                    Theme = new Theme() { ID = eVM.ID, Libelle= eVM.Theme.Libelle} 
-                                                  };
+            Evenement evenement = eVM.Metier;
+            evenement.Images = new List<Image>();
+            evenement.Images.Add(img);
+            evenement.ID = Guid.NewGuid();
+
+            
             try
             {
-                // TODO: Add insert logic here
                ServiceEvenement.CreerEvenement(evenement);
                    
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
