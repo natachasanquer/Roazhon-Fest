@@ -26,6 +26,11 @@
             margin: 0;
             padding: 0;
         }
+        .panel {
+            height: 100%;
+            overflow: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -42,8 +47,10 @@
                 <input type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()">
             </form>
         </div>
-        <div id="panel"></div>
-        <div id="googleMap" style="width:100%;height:460px;"></div>
+        <div class="row">
+            <div id="panel" style="width:46%;height:460px;overflow: scroll;"></div>
+            <div id="googleMap" style="width:54%;height:460px;"></div>
+        </div>
     </div>
 
     <!--<iframe src="https://data.nantesmetropole.fr/explore/embed/dataset/244400404_parkings-publics-nantes/map/?disjunctive.libcategorie&disjunctive.libtype&disjunctive.acces_pmr&disjunctive.service_velo&disjunctive.stationnement_velo&disjunctive.stationnement_velo_securise&disjunctive.moyen_paiement&location=12,47.23344,-1.51423&basemap=jawg.streets&static=false&datasetcard=false&scrollWheelZoom=false" width="100%" height="460px" frameborder="0"></iframe>-->
