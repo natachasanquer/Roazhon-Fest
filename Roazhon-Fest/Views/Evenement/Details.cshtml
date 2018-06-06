@@ -69,9 +69,11 @@
             <label>Point de départ :</label>
             <input type="text" name="origin" id="origin">
             <label>Destination :</label>
-            <input type="text" name="destination" id="destination" value="@ViewData["Lieu"]" placeholder="@ViewData["Lieu"]">
-            <input type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()">
-        </form>
+            <p>
+                @Html.DisplayFor(model => model.Lieu)</p>
+                        <input type="text" name="destination" id="destination" value="@Html.DisplayFor(model => model.Lieu)">
+                        <input type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()">
+</form>
     </div>
     <div id="panel"></div>
     <div id="googleMap" style="width:100%;height:460px;"></div>
