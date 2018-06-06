@@ -114,7 +114,7 @@ namespace Roazhon_Fest.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }

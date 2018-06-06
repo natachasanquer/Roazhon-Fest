@@ -12,7 +12,9 @@ namespace Roazhon_Fest.Models
 
         public Guid ID
         {
-            get { return this.Metier.ID; }
+            get {
+                    return this.Metier.ID;
+            }
 
             set
             {

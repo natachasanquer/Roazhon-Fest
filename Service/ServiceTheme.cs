@@ -32,16 +32,18 @@ namespace Service
             Theme retour = null;
             using (ApplicationContext context = new ApplicationContext())
             {
-                retour = context.Themes.Include("Theme").FirstOrDefault(l => l.ID == id);
+                retour = Get(id, context);
             }
             return retour;
         }
 
-        //surcharge, on la met en private car utilisée uniquement par le service
-        private static Theme Get(Guid id, ApplicationContext context)
+        public static Theme Get(Guid id, ApplicationContext contexte)
         {
-            return context.Themes.Include("Theme").FirstOrDefault(l => l.ID == id);
+            Theme retour = null;
+            retour = contexte.Themes.Include("Theme").FirstOrDefault(l => l.ID == id);
+            return retour;
         }
+        //surcharge, on la met en private car utilisée uniquement par le service
 
         public static void Insert(Theme l)
         {
