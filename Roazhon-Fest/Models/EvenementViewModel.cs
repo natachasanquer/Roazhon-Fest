@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -63,11 +64,33 @@ namespace Roazhon_Fest.Models
             set { Metier.Nom = value; }
         }
         [Display(Name = "Theme")]
-        public Theme Theme
+        public Guid Theme
         {
             get
-            { return Metier.Theme; }
-            set { Metier.Theme= value; }
+            { if(Metier.Theme !=null)
+                {
+                    return Metier.Theme.ID;
+                }
+                else
+                {
+                    return Guid.Empty;
+                }
+            }
+            set {
+                if (Metier.Theme != null) {
+                    Metier.Theme.ID = value;
+                }
+                else
+                {
+                    Metier.Theme = new Theme() { ID= value};
+                }
+            }
+        }
+        [DataType(DataType.Upload)]
+        [Display(Name = "Images")]
+        public String Image
+        {
+            get;set;
         }
         public static List<EvenementViewModel> GetAll()
         {
