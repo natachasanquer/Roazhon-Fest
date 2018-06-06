@@ -1,4 +1,6 @@
 ﻿var pos;
+//var dest = { lat: 48.115236, lng: -1.680967 };
+//var dest = "Le Couvent des Jacobins";
 var rennes = { lat: 48.1172660, lng: -1.6777926 };
 var direction;
 
@@ -12,6 +14,8 @@ function myMap() {
     trafficLayer.setMap(map);
 
     panel = document.getElementById("panel");
+
+    //document.getElementById("destination").value = dest.lat + ", " + dest.lng;
 
     var marker = new google.maps.Marker({
         position: rennes,
@@ -35,6 +39,8 @@ function myMap() {
             marker.setPosition(pos);
             console.log(pos);
             document.getElementById("origin").value = pos.lat + ", " + pos.lng;
+            //document.getElementById("destination").value = dest.lat + ", " + dest.lng;
+            //document.getElementById("destination").value = dest;
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -58,6 +64,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     pos = rennes;
     console.log(pos);
     document.getElementById("origin").value = pos.lat + ", " + pos.lng;
+    //document.getElementById("destination").value = dest.lat + ", " + dest.lng;
+    //document.getElementById("destination").value = dest;
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
         'Error: The Geolocation service failed.' :
