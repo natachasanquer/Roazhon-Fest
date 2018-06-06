@@ -43,11 +43,11 @@ namespace Service
             return context.Evenements.Include("Theme").FirstOrDefault(l => l.ID == id);
         }
 
-        public static void Insert(Evenement l)
+        public static void supprimerEvenement(Evenement l)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                context.Evenements.Add(l);
+                context.Evenements.Remove(l);
                 context.SaveChanges();
             }
 
@@ -74,7 +74,7 @@ namespace Service
             }
         }
 
-        public void creerEvenement(Evenement evenement)
+        public static void CreerEvenement(Evenement evenement)
         {
             using (ApplicationContext context = new ApplicationContext())
             {

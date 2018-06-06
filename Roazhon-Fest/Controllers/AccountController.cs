@@ -87,7 +87,7 @@ namespace Roazhon_Fest.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = "/Home/AccueilConvive", RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = "/Evenement/Index", RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Tentative de connexion non valide.");
@@ -169,7 +169,7 @@ namespace Roazhon_Fest.Controllers
 
                     List<Evenement> evenements = ServiceEvenement.GetAll();
 
-                    return RedirectToAction("AccueilConvive", new {evenements = evenements });
+                    return RedirectToAction("Evenement/Index", new {evenements = evenements });
                 }
                 AddErrors(result);
             }

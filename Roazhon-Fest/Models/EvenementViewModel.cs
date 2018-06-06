@@ -85,7 +85,7 @@ namespace Roazhon_Fest.Models
             if (this.ID == Guid.Empty)
             {
                 //insert
-                ServiceEvenement.Insert(this.Metier);
+                ServiceEvenement.CreerEvenement(this.Metier);
             }
             else
             {

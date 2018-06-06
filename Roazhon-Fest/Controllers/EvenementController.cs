@@ -61,11 +61,8 @@ namespace Roazhon_Fest.Controllers
             try
             {
                 // TODO: Add insert logic here
-                using (ServiceEvenement dal = new ServiceEvenement())
-                {
-                   dal.creerEvenement(evenement);
+               ServiceEvenement.CreerEvenement(evenement);
                    
-                }
                 return RedirectToAction("Index");
             }
             catch
@@ -107,9 +104,10 @@ namespace Roazhon_Fest.Controllers
         }
 
         // GET: Evenement/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            Evenement evenement = ServiceEvenement.GetAll().FirstOrDefault(l => l.ID == id);
+            return RedirectToAction("Index");
         }
 
         // POST: Evenement/Delete/5
