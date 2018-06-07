@@ -1,5 +1,7 @@
 ﻿using BO;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BO
 {
@@ -17,6 +19,5 @@ namespace BO
 
         public Guid ID { get; set; }
         public string Url { get; set; }
-        public Guid EvenementID { get; set; }
     }
 }

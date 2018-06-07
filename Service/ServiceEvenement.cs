@@ -47,7 +47,7 @@ namespace Service
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                ServiceImage.supprimerImageParEvenement(evenement.ID,context);
+                ServiceImage.supprimerImageParEvenement(evenement,context);
                 context.Evenements.Remove(evenement);
                 context.SaveChanges();
             }

@@ -29,11 +29,11 @@ namespace Service
             }
         }
 
-        internal static void supprimerImageParEvenement(Guid evenement, ApplicationContext context)
+        internal static void supprimerImageParEvenement(Evenement evenement, ApplicationContext context)
         {
             using (context)
             {
-                List<Image> images = getAllParEvenement(evenement,context);
+                ICollection<Image> images = evenement.Images;
                 foreach (Image image in images)
                 {
                     context.Images.Remove(image);
@@ -41,14 +41,5 @@ namespace Service
             }
         }
 
-        private static List<Image> getAllParEvenement(Guid idEvenement, ApplicationContext context)
-        {
-            List<Image> images = new List<Image>();
-            using (context)
-            {
-                images = context.Images.Where(b => b.EvenementID == idEvenement).ToList();
-            }
-            return images; 
-        }
     }
 }
