@@ -1,7 +1,3 @@
-
-POST https://maps.googleapis.com/maps/api/place/add/json?key=AIzaSyBG1YsUa6hRRT6uY-ZX8gJXuxWwm-Iwx3A HTTP/1.1
-Host: maps.googleapis.com
-
 {
   "location": {
     "lat": -33.8669710,

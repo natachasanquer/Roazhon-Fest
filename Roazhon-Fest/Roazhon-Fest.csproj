@@ -264,6 +264,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\googlemap.js" />
     <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\testmap.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -272,7 +273,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\parking.js" />
+    <Content Include="..\..\..\..\Desktop\parking.js">
+      <Link>Scripts\parking.js</Link>
+    </Content>
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config">
@@ -317,7 +320,7 @@
     <Content Include="Views\Evenement\Edit.cshtml" />
     <Content Include="Views\Home\GoogleMap.cshtml" />
     <Content Include="Views\Home\Inscription.cshtml" />
-    <Content Include="Views\Json\park.json" />
+    <Content Include="Views\Json\parkings.json" />
     <Content Include="Views\Json\park2.json" />
     <Content Include="Views\Home\TrajetConvive.cshtml" />
   </ItemGroup>

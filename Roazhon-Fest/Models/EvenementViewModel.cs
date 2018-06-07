@@ -118,7 +118,21 @@ namespace Roazhon_Fest.Models
         [Display(Name = "Images")]
         public String Image
         {
-            get;set;
+            get
+            {
+                if (Metier.Images != null && !(Metier.Images.Count()==0) && Metier.Images.First() != null && Metier.Images.First().Url != null)
+                {
+                    return Metier.Images.First().Url;
+                }
+                else
+                {
+                    return "~/Content/rennes.jpg";
+                }
+            }
+            set
+            {
+
+            }
         }
 
         [Display(Name = "Utilisateurs")]
