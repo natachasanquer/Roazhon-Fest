@@ -68,7 +68,8 @@ namespace Service
                 lExistant.Duree= evenement.Duree;
                 lExistant.Lieu = evenement.Lieu;
                 lExistant.Nom = evenement.Nom;
-                lExistant.Theme = evenement.Theme;
+                Theme theme = ServiceTheme.Get(evenement.Theme.ID, context);
+                lExistant.Theme = theme;
 
                 context.SaveChanges();
             }

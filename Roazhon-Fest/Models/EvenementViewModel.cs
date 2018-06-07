@@ -15,9 +15,6 @@ namespace Roazhon_Fest.Models
         public EvenementViewModel()
         {
             this.Metier = new Evenement();
-           
-
-            
 
         }
         public EvenementViewModel(Evenement l)
@@ -86,12 +83,38 @@ namespace Roazhon_Fest.Models
                 }
             }
         }
+
+        [Display(Name = "Libelle du Theme")]
+        public string ThemeLibelle
+        {
+            get
+            {
+                if (Metier.Theme != null)
+                {
+                    return Metier.Theme.Libelle;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+               
+            }
+        }
+
+
         [DataType(DataType.Upload)]
         [Display(Name = "Images")]
         public String Image
         {
             get;set;
         }
+
+        [Display(Name = "Utilisateurs")]
+        public EvenementUtilisateur utilisateurs { get; set; }
+
         public static List<EvenementViewModel> GetAll()
         {
             List<EvenementViewModel> retour = new List<EvenementViewModel>();
