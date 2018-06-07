@@ -19,6 +19,7 @@ function myMap() {
     });
     marker.setMap(map);
 
+
     var infoWindow = new google.maps.InfoWindow({ map: map });
 
     // Try HTML5 geolocation.
@@ -80,3 +81,4 @@ function calculate () {
         });
     }
 };
+
