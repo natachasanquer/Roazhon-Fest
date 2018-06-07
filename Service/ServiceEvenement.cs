@@ -53,23 +53,23 @@ namespace Service
 
         }
 
-        public static void Update(Guid Id)
+        public static void Update(Evenement evenement)
         {
-            Evenement evenement = Get(Id);
+            Guid Id = evenement.ID;
             using (ApplicationContext context = new ApplicationContext())
             {
 
                 EntityState s = context.Entry(evenement).State;
                 //on récupère le livre existant et lui passe les param du l récupéré sur la vue
                 //utilisation de la méthode Get surchargée
-                Evenement lExistant = Get(evenement.ID, context);
-                lExistant.Date = evenement.Date;
-                lExistant.Description= evenement.Description;
-                lExistant.Duree= evenement.Duree;
-                lExistant.Lieu = evenement.Lieu;
-                lExistant.Nom = evenement.Nom;
+                Evenement eExistant = Get(evenement.ID, context);
+                eExistant.Date = evenement.Date;
+                eExistant.Description= evenement.Description;
+                eExistant.Duree= evenement.Duree;
+                eExistant.Lieu = evenement.Lieu;
+                eExistant.Nom = evenement.Nom;
                 Theme theme = ServiceTheme.Get(evenement.Theme.ID, context);
-                lExistant.Theme = theme;
+                eExistant.Theme = theme;
 
                 context.SaveChanges();
             }
