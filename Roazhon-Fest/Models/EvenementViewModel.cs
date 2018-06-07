@@ -60,7 +60,16 @@ namespace Roazhon_Fest.Models
             { return Metier.Nom; }
             set { Metier.Nom = value; }
         }
-        [Display(Name = "Theme")]
+
+        //[Display(Name = "Theme")]
+        //public Theme ThemeClasse
+        //{
+        //    get
+        //    { return Metier.Theme; }
+        //    set { Metier.Theme = value; }
+        //}
+
+        [Display(Name = "ID Theme")]
         public Guid Theme
         {
             get
@@ -109,7 +118,21 @@ namespace Roazhon_Fest.Models
         [Display(Name = "Images")]
         public String Image
         {
-            get;set;
+            get
+            {
+                if (Metier.Images != null && !(Metier.Images.Count()==0) && Metier.Images.First() != null && Metier.Images.First().Url != null)
+                {
+                    return Metier.Images.First().Url;
+                }
+                else
+                {
+                    return "~/Content/rennes.jpg";
+                }
+            }
+            set
+            {
+
+            }
         }
 
         [Display(Name = "Utilisateurs")]
@@ -136,7 +159,7 @@ namespace Roazhon_Fest.Models
             else
             {
                 //update
-                ServiceEvenement.Update(this.Metier.ID);
+                ServiceEvenement.Update(this.Metier);
             }
         }
 

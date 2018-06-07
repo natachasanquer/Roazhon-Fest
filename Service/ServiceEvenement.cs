@@ -17,7 +17,7 @@ namespace Service
 
             using (ApplicationContext context = new ApplicationContext())
             {
-                retour = context.Evenements.Include("Theme").ToList();
+                retour = context.Evenements.Include("Theme").Include("Images").ToList();
             }
             return retour;
         }
@@ -32,7 +32,7 @@ namespace Service
             Evenement retour = null;
             using (ApplicationContext context = new ApplicationContext())
             {
-                retour = context.Evenements.Include("Theme").FirstOrDefault(l => l.ID == id);
+                retour = context.Evenements.Include("Theme").Include("Images").FirstOrDefault(l => l.ID == id);
             }
             return retour;
         }
@@ -43,33 +43,35 @@ namespace Service
             return context.Evenements.Include("Theme").Include("Images").FirstOrDefault(l => l.ID == id);
         }
 
-        public static void supprimerEvenement(Evenement l)
+        public static void supprimerEvenement(Evenement evenement)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                context.Evenements.Remove(l);
+                ServiceImage.supprimerImageParEvenement(evenement,context);
+                context.Evenements.Remove(evenement);
                 context.SaveChanges();
             }
 
         }
 
-        public static void Update(Guid Id)
+        public static void Update(Evenement evenement)
         {
-            Evenement evenement = Get(Id);
+            Guid Id = evenement.ID;
             using (ApplicationContext context = new ApplicationContext())
             {
 
                 EntityState s = context.Entry(evenement).State;
                 //on récupère le livre existant et lui passe les param du l récupéré sur la vue
                 //utilisation de la méthode Get surchargée
-                Evenement lExistant = Get(evenement.ID, context);
-                lExistant.Date = evenement.Date;
-                lExistant.Description= evenement.Description;
-                lExistant.Duree= evenement.Duree;
-                lExistant.Lieu = evenement.Lieu;
-                lExistant.Nom = evenement.Nom;
+                Evenement eExistant = Get(evenement.ID, context);
+                eExistant.Date = evenement.Date;
+                eExistant.Description= evenement.Description;
+                eExistant.Duree= evenement.Duree;
+                eExistant.Lieu = evenement.Lieu;
+                eExistant.Nom = evenement.Nom;
                 Theme theme = ServiceTheme.Get(evenement.Theme.ID, context);
-                lExistant.Theme = theme;
+
+                eExistant.Theme = theme;
 
                 context.SaveChanges();
             }
@@ -85,7 +87,6 @@ namespace Service
                 context.Evenements.Add(evenement);
                 context.SaveChanges();
             }
-           
         }
         public void Dispose()
         {

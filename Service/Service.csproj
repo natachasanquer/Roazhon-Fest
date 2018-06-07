@@ -89,6 +89,7 @@
     <Compile Include="ServiceEvenement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceImage.cs" />
+    <Compile Include="ServiceRole.cs" />
     <Compile Include="ServiceTheme.cs" />
     <Compile Include="ServiceUtilisateur.cs" />
   </ItemGroup>

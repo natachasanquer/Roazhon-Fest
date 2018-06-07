@@ -28,5 +28,18 @@ namespace Service
                 context.Dispose();
             }
         }
+
+        internal static void supprimerImageParEvenement(Evenement evenement, ApplicationContext context)
+        {
+            using (context)
+            {
+                ICollection<Image> images = evenement.Images;
+                foreach (Image image in images)
+                {
+                    context.Images.Remove(image);
+                }
+            }
+        }
+
     }
 }

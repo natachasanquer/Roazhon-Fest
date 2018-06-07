@@ -72,7 +72,11 @@ namespace Roazhon_Fest.Controllers
             evenement.ID = Guid.NewGuid();
 
             System.Security.Principal.IPrincipal u = System.Web.HttpContext.Current.User;
-            EvenementUtilisateur evenementutilisateur = new EvenementUtilisateur() { Utilisateur = new Utilisateur() { Email = u.Identity.Name, ID = Guid.NewGuid() } };
+            EvenementUtilisateur evenementutilisateur = new EvenementUtilisateur() {
+                Utilisateur = new Utilisateur() { Email = u.Identity.Name, ID = Guid.NewGuid() },
+                Evenement = evenement,
+                Role = ServiceRole.getOrga()
+            };
             evenement.Utilisateurs = new List<EvenementUtilisateur>();
             evenement.Utilisateurs.Add(evenementutilisateur);
 
@@ -100,17 +104,12 @@ namespace Roazhon_Fest.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit(EvenementViewModel lVM)
+        public ActionResult Edit(EvenementViewModel eVM)
         {
             try
             {
-                //c'est le livreViewModel qui se save tout seul
-                //il sait dans quel état il est : new ou existant
-                //et le framework se charge du reste !
-                lVM.Save();
-                //pour reporter l'intelligence sur le ServiceLivres
-                //il faut faire une fonction InsertOrUpdate dans LVM et le service 
-                //et dans le service on fait if/else
+               
+                eVM.Save();
 
                 return RedirectToAction("Index");
             }
