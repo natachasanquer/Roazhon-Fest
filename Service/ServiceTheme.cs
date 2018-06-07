@@ -40,7 +40,7 @@ namespace Service
         public static Theme Get(Guid id, ApplicationContext contexte)
         {
             Theme retour = null;
-            retour = contexte.Themes.Include("Theme").FirstOrDefault(l => l.ID == id);
+            retour = contexte.Themes.FirstOrDefault(l => l.ID == id);
             return retour;
         }
         //surcharge, on la met en private car utilisée uniquement par le service

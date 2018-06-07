@@ -60,7 +60,16 @@ namespace Roazhon_Fest.Models
             { return Metier.Nom; }
             set { Metier.Nom = value; }
         }
-        [Display(Name = "Theme")]
+
+        //[Display(Name = "Theme")]
+        //public Theme ThemeClasse
+        //{
+        //    get
+        //    { return Metier.Theme; }
+        //    set { Metier.Theme = value; }
+        //}
+
+        [Display(Name = "ID Theme")]
         public Guid Theme
         {
             get
@@ -136,7 +145,7 @@ namespace Roazhon_Fest.Models
             else
             {
                 //update
-                ServiceEvenement.Update(this.Metier.ID);
+                ServiceEvenement.Update(this.Metier);
             }
         }
 
