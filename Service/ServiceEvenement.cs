@@ -17,7 +17,7 @@ namespace Service
 
             using (ApplicationContext context = new ApplicationContext())
             {
-                retour = context.Evenements.Include("Theme").ToList();
+                retour = context.Evenements.Include("Theme").Include("Images").ToList();
             }
             return retour;
         }
@@ -32,7 +32,7 @@ namespace Service
             Evenement retour = null;
             using (ApplicationContext context = new ApplicationContext())
             {
-                retour = context.Evenements.Include("Theme").FirstOrDefault(l => l.ID == id);
+                retour = context.Evenements.Include("Theme").Include("Images").FirstOrDefault(l => l.ID == id);
             }
             return retour;
         }
@@ -43,11 +43,12 @@ namespace Service
             return context.Evenements.Include("Theme").Include("Images").FirstOrDefault(l => l.ID == id);
         }
 
-        public static void supprimerEvenement(Evenement l)
+        public static void supprimerEvenement(Evenement evenement)
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-                context.Evenements.Remove(l);
+                ServiceImage.supprimerImageParEvenement(evenement.ID,context);
+                context.Evenements.Remove(evenement);
                 context.SaveChanges();
             }
 
@@ -69,6 +70,7 @@ namespace Service
                 eExistant.Lieu = evenement.Lieu;
                 eExistant.Nom = evenement.Nom;
                 Theme theme = ServiceTheme.Get(evenement.Theme.ID, context);
+
                 eExistant.Theme = theme;
 
                 context.SaveChanges();
@@ -85,7 +87,6 @@ namespace Service
                 context.Evenements.Add(evenement);
                 context.SaveChanges();
             }
-           
         }
         public void Dispose()
         {

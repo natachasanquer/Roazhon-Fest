@@ -72,7 +72,11 @@ namespace Roazhon_Fest.Controllers
             evenement.ID = Guid.NewGuid();
 
             System.Security.Principal.IPrincipal u = System.Web.HttpContext.Current.User;
-            EvenementUtilisateur evenementutilisateur = new EvenementUtilisateur() { Utilisateur = new Utilisateur() { Email = u.Identity.Name, ID = Guid.NewGuid() } };
+            EvenementUtilisateur evenementutilisateur = new EvenementUtilisateur() {
+                Utilisateur = new Utilisateur() { Email = u.Identity.Name, ID = Guid.NewGuid() },
+                Evenement = evenement,
+                Role = ServiceRole.getOrga()
+            };
             evenement.Utilisateurs = new List<EvenementUtilisateur>();
             evenement.Utilisateurs.Add(evenementutilisateur);
 

@@ -17,5 +17,6 @@ namespace BO
 
         public Guid ID { get; set; }
         public string Url { get; set; }
+        public Guid EvenementID { get; set; }
     }
 }

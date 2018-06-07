@@ -28,5 +28,27 @@ namespace Service
                 context.Dispose();
             }
         }
+
+        internal static void supprimerImageParEvenement(Guid evenement, ApplicationContext context)
+        {
+            using (context)
+            {
+                List<Image> images = getAllParEvenement(evenement,context);
+                foreach (Image image in images)
+                {
+                    context.Images.Remove(image);
+                }
+            }
+        }
+
+        private static List<Image> getAllParEvenement(Guid idEvenement, ApplicationContext context)
+        {
+            List<Image> images = new List<Image>();
+            using (context)
+            {
+                images = context.Images.Where(b => b.EvenementID == idEvenement).ToList();
+            }
+            return images; 
+        }
     }
 }
