@@ -120,7 +120,7 @@ namespace Roazhon_Fest.Models
         {
             get
             {
-                if (Metier.Images != null && Metier.Images.First() != null && Metier.Images.First().Url != null)
+                if (Metier.Images != null && !(Metier.Images.Count()==0) && Metier.Images.First() != null && Metier.Images.First().Url != null)
                 {
                     return Metier.Images.First().Url;
                 }
