@@ -122,11 +122,11 @@ namespace Roazhon_Fest.Models
             {
                 if (Metier.Images != null && !(Metier.Images.Count()==0) && Metier.Images.First() != null && Metier.Images.First().Url != null)
                 {
-                    return Metier.Images.First().Url;
+                    return "Images/"+Metier.Images.First().Url;
                 }
                 else
                 {
-                    return "~/Content/rennes.jpg";
+                    return "Content/rennes.jpg";
                 }
             }
             set
