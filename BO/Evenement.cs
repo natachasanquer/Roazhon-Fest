@@ -20,6 +20,8 @@ namespace BO
             this.Description = description;
             this.Nom = nom;
             this.Theme = theme;
+            this.Images = new List<Image>();
+            this.Utilisateurs = new List<EvenementUtilisateur>();
         }
 
         public Guid ID { get; set; }

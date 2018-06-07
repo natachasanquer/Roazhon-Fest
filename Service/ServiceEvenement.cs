@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using BO;
 using DAL;
+using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace Service
 {
@@ -22,11 +24,7 @@ namespace Service
             return retour;
         }
 
-        /// <summary>
-        /// retoune le livre en BDD
-        /// </summary>
-        /// <param name="id">identifiant du livre</param>
-        /// <returns></returns>
+
         public static Evenement Get(Guid id)
         {
             Evenement retour = null;
@@ -81,8 +79,20 @@ namespace Service
         {
             using (ApplicationContext context = new ApplicationContext())
             {
+                string user = HttpContext.Current.User.Identity.GetUserId();
+
+
                 Theme theme = context.Themes.FirstOrDefault(t => t.ID == evenement.Theme.ID);
                 evenement.Theme = theme;
+
+                Role role = context.RoleOC.FirstOrDefault(r => r.Libelle == "Orga");
+
+                EvenementUtilisateur utilisateurEvenement = new EvenementUtilisateur();
+                utilisateurEvenement.Role = role;
+                utilisateurEvenement.Evenement = evenement;
+                utilisateurEvenement.ID = Guid.NewGuid();
+
+                evenement.Utilisateurs.Add(utilisateurEvenement);
 
                 context.Evenements.Add(evenement);
                 context.SaveChanges();
