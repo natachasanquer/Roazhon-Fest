@@ -10,87 +10,90 @@
     <link rel="stylesheet" type="text/css" href="~/Content/accueilConvive.css" />
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-light alert alert-info mt-4 mb-4 mx-auto col-11 shadow">
-            <form class="form-inline mx-auto">
-                <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Go</button>
-            </form>
-            <!-- <button class="btn btn-outline-info ml-auto" type="button">Ajouter</button> -->
-            @Html.ActionLink("Evenements", "Index", null, new { @class = "decoration-none" })
-            <button class="btn btn-outline-danger ml-auto" type="button"><img src="~/Content/logout.png" width="24px" /></button>
-        </nav>
 
+    <nav class="navbar navbar-light alert alert-info mt-5 mb-4 mx-auto col-11 shadow">
+        <form class="form-inline mx-auto">
+            <input class="form-control mr-sm-2" type="search" aria-label="Search">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Go</button>
+        </form>
+        <!-- <button class="btn btn-outline-info ml-auto" type="button">Ajouter</button> -->
+        @Html.ActionLink("Evenements", "Index", null, new { @class = "btn btn-warning" })
+        <button class="btn btn-outline-danger ml-auto" type="button"><img src="~/Content/logout.png" width="24px" /></button>
+    </nav>
+    <div class="container col-11">
         @using (Html.BeginForm("Create", "Evenement", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
+        {
+            @Html.AntiForgeryToken()
 
-        <h4 class="mt-5">Ajouter un événement</h4>
-        <hr class="mb-5 col-11" />
-        <div class="form-horizontal mx-auto col-11" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.45);">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="row">
-                <div class="form-group col-5 mx-auto mt-5">
-                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label" })
-                    <div class="">
-                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            <h4 class="mt-5">Ajouter un événement</h4>
+            <hr class="mb-5" />
+            <div class="form-horizontal mx-auto" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="form-group col-5 mx-auto mt-5">
+                        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group col-5 mx-auto mt-5">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label " })
+                        <div class="">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", type = "textarea" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-                <div class="form-group col-5 mx-auto mt-5">
-                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label " })
-                    <div class="">
-                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", type = "textarea" } })
-                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="form-group col-5 mx-auto">
+                        @Html.LabelFor(model => model.Duree, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.EditorFor(model => model.Duree, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.Duree, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group col-5 mx-auto">
+                        @Html.LabelFor(model => model.Lieu, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.EditorFor(model => model.Lieu, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Lieu, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-5 mx-auto">
-                    @Html.LabelFor(model => model.Duree, htmlAttributes: new { @class = "control-label" })
-                    <div class="">
-                        @Html.EditorFor(model => model.Duree, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                        @Html.ValidationMessageFor(model => model.Duree, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="form-group col-5 mx-auto">
+                        @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group col-5 mx-auto">
-                    @Html.LabelFor(model => model.Lieu, htmlAttributes: new { @class = "control-label" })
-                    <div class="">
-                        @Html.EditorFor(model => model.Lieu, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Lieu, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-5 mx-auto">
-                    @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label" })
-                    <div class="">
-                        @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
-                    </div>
-                </div>
 
-                <div class="form-group col-5 mx-auto">
-                    @Html.LabelFor(model => model.Theme, htmlAttributes: new { @class = "control-label" })
-                    <div class="">
-                        @*@Html.EditorFor(model => model.Theme, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })*@
-                        @Html.DropDownListFor(model => model.Theme, Model.themes, "Sélectionnez un thème", new { @class = "form-control" })
+                    <div class="form-group col-5 mx-auto">
+                        @Html.LabelFor(model => model.Theme, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @*@Html.EditorFor(model => model.Theme, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })*@
+                            @Html.DropDownListFor(model => model.Theme, Model.themes, "Sélectionnez un thème", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5 mx-auto mt-2">
+                        @Html.TextBoxFor(model => model.Image, "", new { @type = "file", @multiple = "multiple", @class = "form-control form-control-file" })
+                    </div>
+                    <div class="col-5 mx-auto">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="text-center">
+                        <input type="submit" value="Créer" class="btn btn-default my-5" />
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                @Html.TextBoxFor(model => model.Image, "", new { @type = "file", @multiple = "multiple", @class = "form-control-file" })
-            </div>
-
-            <div class="form-group">
-                <div class="text-center">
-                    <input type="submit" value="Créer" class="btn btn-default my-5" />
-                </div>
-            </div>
-        </div>
-}
+        }
 
     </div>
 
