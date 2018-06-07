@@ -11,114 +11,100 @@
 </head>
 <body>
 
-    <div class="container">
-        <nav class="navbar navbar-light alert alert-info mt-4 mb-4 mx-auto col-11 shadow">
-            <form class="form-inline mx-auto">
-                <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Go</button>
-            </form>
-            <!-- <button class="btn btn-outline-info ml-auto" type="button">Ajouter</button> -->
-            @Html.ActionLink("Evenements", "Index", null, new { @class = "decoration-none" })
-            <button class="btn btn-outline-danger ml-auto" type="button"><img src="~/Content/logout.png" width="24px" /></button>
-        </nav>
 
-        <h4>
-            <dd>
-                @Html.DisplayFor(model => model.Nom)
-            </dd>
-        </h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Date)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Date)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Duree)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Duree)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Lieu)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Lieu)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Theme)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ThemeLibelle)
-            </dd>
-
-            <dd>
-                @Html.DisplayFor(model => model.Image)
-            </dd>
-
-        </dl>
-    </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-
-
-    @{
-        var lieu = @ViewData["Lieu"];
-    }
-    <div class="container">
-        <div id="destinationForm">
-            <form action="" method="get" name="direction" id="direction">
-                <div class="my-3" style="display: flex; justify-content: center; flex-wrap: wrap;">
-                    <input type="text" placeholder="Départ" name="origin" id="origin" class="form-control mx-1">
-                    <input type="text" placeholder="Destination" name="destination" id="destination" class="form-control mx-1" value="@Html.DisplayFor(model => model.Lieu)">
-                    <input type="button" class="btn btn-primary mx-1" value="Calculer l'itinéraire" onclick="javascript:calculate()">
-                </div>
-            </form>
-        </div>
-        <div id="googleMap" style="width:100%;height:460px;"></div>
-        <!--<div id="panel" style="overflow:scroll;height:360px"></div>-->
-
+    <nav class="navbar navbar-light alert alert-info mt-5 mb-4 mx-auto col-11 shadow">
+        <form class="form-inline mx-auto">
+            <input class="form-control mr-sm-2" type="search" aria-label="Search">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Go</button>
+        </form>
+        <!-- <button class="btn btn-outline-info ml-auto" type="button">Ajouter</button> -->
+        @Html.ActionLink("Evenements", "Index", null, new { @class = "btn btn-warning" })
+        <button class="btn btn-outline-danger ml-auto" type="button"><img src="~/Content/logout.png" width="24px" /></button>
+    </nav>
+    <div class="container col-11">
         <div class="row">
-            <div id="panel" style="width:48%;height:460px;overflow: scroll;"></div>
-            <table id="PTable" class="table" style="width: 50%;overflow: scroll; height:460px">
-                <thead>
-                    <tr>
-                        <th>
-                            Parking
-                        </th>
-                        <th>
-                            Places
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id='bodyT'>
-                    <tr></tr>
-                </tbody>
-            </table>
+            <div>
+                <h2 class="mt-4">@Html.DisplayFor(model => model.Nom)</h2>
+                <h6 class="ml-auto">@Html.DisplayFor(model => model.Lieu)</h6>
+            </div>
+        </div>
+        <hr class="mt-5 mb-5" />
+        <div class="row mt-3 mb-3">
+            <div class="">
+                <div class="card border-dark mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Description</div>
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">Dark card title</h5>
+                        <p class="card-text">@Html.DisplayFor(model => model.Description)</p>
+                    </div>
+                </div>
+                <div>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Date)
+                    </dd>
+                </div>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Duree)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Duree)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Theme)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ThemeLibelle)
+                </dd>
+                <hr />
+                <div class="row mt-3">
+                    <div class="ml-3">@Html.ActionLink("Modifier", "Edit", new { id = Model.ID }, new { @class = "btn btn-success" })</div>
+                    <div class="ml-2">@Html.ActionLink("X", "Edit", null, new { @class = "btn btn-danger", id = Model.ID })</div>
+                </div>
+            </div>
+            <div class="ml-auto mb-5" id="googleMap" style="width:60%;height:400px;"></div>
         </div>
 
-        <!-- entête du tableau où on affiche les parkings et le nombre de places-->
 
-
+        @{
+        var lieu = @ViewData["Lieu"];
+        }
+        <div class="">
+            <div id="destinationForm" class="mb-5">
+                <form action="" method="get" name="direction" id="direction">
+                    <div class="my-3" style="display: flex; justify-content: center; flex-wrap: wrap;">
+                        <input type="text" placeholder="Départ" name="origin" id="origin" class="form-control mx-1">
+                        <input type="text" placeholder="Destination" name="destination" id="destination" class="form-control mx-1" value="@Html.DisplayFor(model => model.Lieu)">
+                        <input type="button" class="btn btn-primary mx-1" value="Calculer l'itinéraire" onclick="javascript:calculate()">
+                    </div>
+                </form>
+            </div>
+            <div class="row mt-5">
+                <div id="panel" style="width:48%;height:460px;overflow: scroll;"></div>
+                <table id="PTable" class="table" style="width: 50%;overflow: scroll; height:460px">
+                    <thead>
+                        <tr>
+                            <th>
+                                Parking
+                            </th>
+                            <th>
+                                Places
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id='bodyT'>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
 
