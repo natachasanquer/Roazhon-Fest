@@ -58,7 +58,7 @@
                 <hr />
                 <div class="row mt-3">
                     <div class="ml-3">@Html.ActionLink("Modifier", "Edit", new { id = Model.ID }, new { @class = "btn btn-success" })</div>
-                    <div class="ml-2">@Html.ActionLink("X", "Edit", null, new { @class = "btn btn-danger", id = Model.ID })</div>
+                    <div class="ml-2">@Html.ActionLink("X", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger", id = Model.ID })</div>
                 </div>
             </div>
             <div class="ml-auto mb-5" id="googleMap" style="width:60%;height:400px;"></div>

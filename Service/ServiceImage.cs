@@ -2,6 +2,7 @@
 using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,10 +34,12 @@ namespace Service
         {
             using (context)
             {
+                EntityState s = context.Entry(evenement).State;
                 ICollection<Image> images = evenement.Images;
                 foreach (Image image in images)
                 {
                     context.Images.Remove(image);
+                    context.SaveChanges();
                 }
             }
         }

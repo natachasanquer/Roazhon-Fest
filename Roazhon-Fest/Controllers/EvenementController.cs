@@ -117,6 +117,7 @@ namespace Roazhon_Fest.Controllers
         public ActionResult Delete(Guid id)
         {
             Evenement evenement = ServiceEvenement.GetAll().FirstOrDefault(l => l.ID == id);
+            ServiceEvenement.supprimerEvenement(evenement);
             return RedirectToAction("Index");
         }
 
