@@ -4,28 +4,75 @@ var parkings;
 // use fetch to retrieve it, and report any errors that occur in the fetch operation
 // once the parkings have been successfully loaded and formatted as a JSON object
 // using response.json(), run the initialize() function
-fetch('http://data.citedia.com/r1/parks/').then(function (response) {
-    if (response.ok) {
-        response.json().then(function (json) {
-            parkings = json;
+window.onload = function () {
+    fetch('http://data.citedia.com/r1/parks/').then(function (response) {
+        console.log(response);
+        response.text().then(function (text) {
+            console.log(text);
+            parkings = JSON.parse(text);
             initialize();
-        });
-    } else {
-        console.log('Network request for parkings.json failed with response ' + response.status + ': ' + response.statusText);
-    }
-});
+        })
+        /* response.text().then(function (text) {
+             poemDisplay.textContent = text;
+         });*/
+
+        /*if (response.ok) {
+            response.json().then(function (json) {
+                parkings = json;
+                initialize();
+            });
+        } else {
+            console.log('Network request for parkings.json failed with response ' + response.status + ': ' + response.statusText);
+        }*/
+    });
+}
 
 function ajouterLigne() {
+
     var tableau = document.getElementById("PTable");
 
+    for (var i = 0; i < parkings.parks.length; i++) {
+
+        var newRow = $("<tr>");
+        var cols = "";
+        cols += '<td>' + parkings.parks[i].parkInformation.name + '</td>';
+        cols += '<td>' + parkings.parks[i].parkInformation.max + '</td>';
+        // dans le bouton trajet, on passe la latitude et la longitude du parking
+        /*cols += '<td><button class="btn" onclick="changeMapsView(' +
+            parking.coordinates.lat +
+            ',' +
+            parking.coordinates.lng +
+            ' )">trajet</button></td>';*/
+        // on crée la nouvelle ligne et on l'ajoute au tableau
+        newRow.append(cols);
+        $("table").append(newRow);
+
+   /* 
     var ligne = tableau.insertRow(-1);//on a ajouté une ligne
 
     var colonne1 = ligne.insertCell(0);//on a une ajouté une cellule
-    colonne1.innerHTML += document.initialize(name.value);//on y met le contenu de titre
+    colonne1.innerHTML += parking[i].parkInformation.name;//on y met le contenu de titre
     console.log(name);
     var colonne2 = ligne.insertCell(1);//on ajoute la seconde cellule
-    colonne2.innerHTML += document.initialize(nbPlaces.value);
+    colonne2.innerHTML += parking[i].parkInformation.max;*/
+    }
 }
+/*
+function insRow(parking) {
+    var newRow = $("<tr>");
+    var cols = "";
+    cols += '<td>' + parking.id + '</td>';
+    cols += '<td>' + parking.places + '</td>';
+    // dans le bouton trajet, on passe la latitude et la longitude du parking
+    cols += '<td><button class="btn" onclick="changeMapsView(' +
+        parking.coordinates.lat +
+        ',' +
+        parking.coordinates.lng +
+        ' )">trajet</button></td>';
+    // on crée la nouvelle ligne et on l'ajoute au tableau
+    newRow.append(cols);
+    $("table").append(newRow);
+}*/
 
 // sets up the app logic, declares required variables, contains all the other functions
 function initialize() {
@@ -34,7 +81,7 @@ function initialize() {
     console.log(name);
     var nbPlaces = document.querySelector('#max');
     var itineraryBtn = document.querySelector('button');
-    var main = document.querySelector('main');
+    //var main = document.querySelector('main');
 
     // keep a record of what the last name and nbPlaces entered were
     var lastName = name.value;
@@ -51,7 +98,8 @@ function initialize() {
     // To start with, set finalGroup to equal the entire parkings database
     // then run updateDisplay(), so ALL parkings are displayed initially.
     finalGroup = parkings;
-    updateDisplay();
+    ajouterLigne();
+    //updateDisplay();
 
     // Set both to equal an empty array, in time for searches to be run
     nameGroup = [];
@@ -133,6 +181,7 @@ function initialize() {
 
     }
 */
+    /*
     // start the process of updating the display with the new set of parkings
     function updateDisplay() {
         // remove the previous contents of the <main> element
@@ -151,7 +200,7 @@ function initialize() {
                 fetchBlob(finalGroup[i]);
             }
         }
-    }
+    }*/
 /*
     // fetchBlob uses fetch to retrieve the image for that parking, and then sends the
     // resulting image display URL and parking object on to showParking() to finally
