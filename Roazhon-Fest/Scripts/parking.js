@@ -35,7 +35,13 @@ function ajouterLigne() {
         // leur nom à la colonne 1, puis leur nb de places max à la colonne 2
         cols += '<td>' + parkings.parks[i].parkInformation.name + '</td>';
         cols += '<td>' + parkings.parks[i].parkInformation.max + '</td>';
-
+        //cols += '<td><button>Itinéraire</button></td>';
+        /*cols += '<td><button class="btn" onclick="changeMapsView(' +
+            parking.coordinates.lat +
+            ',' +
+            parking.coordinates.lng +
+            ' )">trajet</button></td>';
+        */
         // dans le bouton trajet, on passe la latitude et la longitude du parking
         /*cols += '<td><button class="btn" onclick="changeMapsView(' +
             parking.coordinates.lat +
@@ -230,4 +236,14 @@ function initialize() {
         section.appendChild(para);
         //section.appendChild(image);
     }
+}
+
+// fonction qui change la carte avec l'itinéraire vers le parking sélectionné
+function changeMapsView(lat, lng) {
+    document.getElementById("googleMap").src =
+        'https://www.google.com/maps/embed/v1/directions?origin=rennes&destination=' +
+        lat +
+        ',' +
+        lng +
+        '&key=AIzaSyBG1YsUa6hRRT6uY-ZX8gJXuxWwm-Iwx3A';
 }
