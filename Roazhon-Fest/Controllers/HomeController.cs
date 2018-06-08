@@ -27,11 +27,6 @@ namespace Roazhon_Fest.Controllers
             return View();
         }
 
-        public ActionResult GoogleMap()
-        {
-            return View();
-        }
-
         public ActionResult AccueilConvive()
         {
             return View();
@@ -46,10 +41,5 @@ namespace Roazhon_Fest.Controllers
             return View();
         }
 
-
-        public ActionResult TrajetConvive()
-        {
-            return View();
-        }
     }
 }
