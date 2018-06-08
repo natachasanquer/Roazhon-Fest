@@ -49,7 +49,14 @@ namespace Roazhon_Fest.Controllers
         [HttpPost]
         public ActionResult Create(EvenementViewModel eVM)
         {
-            
+            System.Diagnostics.Debug.WriteLine("Entrée dans la méthode de création de la classe Evenement.");
+
+            Evenement evenement = eVM.Metier;
+            evenement.Utilisateurs = new List<EvenementUtilisateur>();
+            evenement.Images = new List<Image>();
+            evenement.ID = Guid.NewGuid();
+
+            //Creation de l'image
             Image img = new Image();
             var fileI = Request.Files[0];
             if (fileI != null && fileI.ContentLength > 0)
@@ -64,21 +71,8 @@ namespace Roazhon_Fest.Controllers
             }
 
             img.ID = Guid.NewGuid();
-
-            System.Diagnostics.Debug.WriteLine("Entrée dans la méthode de création de la classe Evenement.");
-            Evenement evenement = eVM.Metier;
             evenement.Images = new List<Image>();
             evenement.Images.Add(img);
-            evenement.ID = Guid.NewGuid();
-
-            System.Security.Principal.IPrincipal u = System.Web.HttpContext.Current.User;
-            EvenementUtilisateur evenementutilisateur = new EvenementUtilisateur() {
-                Utilisateur = new Utilisateur() { Email = u.Identity.Name, ID = Guid.NewGuid() },
-                Evenement = evenement,
-                Role = ServiceRole.getOrga()
-            };
-            evenement.Utilisateurs = new List<EvenementUtilisateur>();
-            evenement.Utilisateurs.Add(evenementutilisateur);
 
             try
             {

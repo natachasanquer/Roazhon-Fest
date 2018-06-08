@@ -27,17 +27,15 @@
         <div class="row mx-auto my-5">
 
             @foreach (var item in Model)
-            {
-                <div class="card mx-auto my-4 shadow scale" style="width: 18rem;">
-                    <img class="card-img-top" src="~/Images/" +@Html.DisplayFor(modelItem=> item.Images[0].url) alt="Card image cap">
-                    <div class="card-body">
-                        @Html.ActionLink(@Html.DisplayFor(modelItem => item.Nom).ToString(), "Details", new { ID = item.ID })
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
-                    </div>
-                </div>
-            }
-
-
+    {
+        <div class="card mx-auto my-4 shadow scale" style="width: 18rem;">
+            <img class="card-img-top" src="~/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="text-center">@Html.ActionLink(@Html.DisplayFor(modelItem => item.Nom).ToString(), "Details", new { ID = item.ID }, new { @style = "text-decoration: none; color:black" })</h4>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+            </div>
+        </div>
+}
         </div>
     </div>
 </body>

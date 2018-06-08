@@ -34,7 +34,6 @@
                 <div class="card border-dark mb-3" style="max-width: 18rem;">
                     <div class="card-header">Description</div>
                     <div class="card-body text-dark">
-                        <h5 class="card-title">Dark card title</h5>
                         <p class="card-text">@Html.DisplayFor(model => model.Description)</p>
                     </div>
                 </div>
@@ -56,13 +55,6 @@
                     @Html.DisplayFor(model => model.Duree)
                 </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Theme)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ThemeLibelle)
-                </dd>
                 <hr />
                 <div class="row mt-3">
                     <div class="ml-3">@Html.ActionLink("Modifier", "Edit", new { id = Model.ID }, new { @class = "btn btn-success" })</div>
