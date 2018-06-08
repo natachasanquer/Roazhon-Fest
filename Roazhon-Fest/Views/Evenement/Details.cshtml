@@ -74,7 +74,7 @@
 
 
         @{
-        var lieu = @ViewData["Lieu"];
+            var lieu = @ViewData["Lieu"];
         }
         <div class="">
             <div id="destinationForm" class="mb-5">
@@ -87,22 +87,24 @@
                 </form>
             </div>
             <div class="row mt-5">
-                <div id="panel" style="width:48%;height:460px;overflow: scroll;"></div>
-                <table id="PTable" class="table" style="width: 50%;overflow: scroll; height:460px">
-                    <thead>
-                        <tr>
-                            <th>
-                                Parking
-                            </th>
-                            <th>
-                                Places
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody id='bodyT'>
-                        <tr></tr>
-                    </tbody>
-                </table>
+                <div id="panel" style="width:48%;height:460px;overflow: scroll;margin-right:2em"></div>
+                <div style="width: 48%;overflow: scroll; height:460px">
+                    <table id="PTable" class="table">
+                        <thead>
+                            <tr>
+                                <th id="name">
+                                    Parking
+                                </th>
+                                <th id="nbPlaces">
+                                    Places
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id='bodyT'>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -113,7 +115,9 @@
 
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="~/Scripts/googlemap.js"></script>
-    <script type="text/javascript" src="~/Scripts/parking.js"></script>
+    <script type="text/javascript" src="~/Scripts/testmap.js"></script>
+    <!--<script type="text/javascript" src="~/Scripts/parking.js"></script>-->
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
