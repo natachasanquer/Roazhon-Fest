@@ -4,7 +4,7 @@ var parkings;
 // use fetch to retrieve it, and report any errors that occur in the fetch operation
 // once the parkings have been successfully loaded and formatted as a JSON object
 // using response.json(), run the initialize() function
-fetch('parkings.json').then(function (response) {
+fetch('http://data.citedia.com/r1/parks/').then(function (response) {
     if (response.ok) {
         response.json().then(function (json) {
             parkings = json;
@@ -15,10 +15,23 @@ fetch('parkings.json').then(function (response) {
     }
 });
 
+function ajouterLigne() {
+    var tableau = document.getElementById("PTable");
+
+    var ligne = tableau.insertRow(-1);//on a ajouté une ligne
+
+    var colonne1 = ligne.insertCell(0);//on a une ajouté une cellule
+    colonne1.innerHTML += document.initialize(name.value);//on y met le contenu de titre
+    console.log(name);
+    var colonne2 = ligne.insertCell(1);//on ajoute la seconde cellule
+    colonne2.innerHTML += document.initialize(nbPlaces.value);
+}
+
 // sets up the app logic, declares required variables, contains all the other functions
 function initialize() {
     // grab the UI elements that we need to manipulate
     var name = document.querySelector('#name');
+    console.log(name);
     var nbPlaces = document.querySelector('#max');
     var itineraryBtn = document.querySelector('button');
     var main = document.querySelector('main');

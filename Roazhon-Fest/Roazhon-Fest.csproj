@@ -320,7 +320,7 @@
     <Content Include="Views\Evenement\Edit.cshtml" />
     <Content Include="Views\Home\GoogleMap.cshtml" />
     <Content Include="Views\Home\Inscription.cshtml" />
-    <Content Include="Views\Json\parkings.json" />
+    <Content Include="Scripts\parkings.json" />
     <Content Include="Views\Json\park2.json" />
     <Content Include="Views\Home\TrajetConvive.cshtml" />
   </ItemGroup>
